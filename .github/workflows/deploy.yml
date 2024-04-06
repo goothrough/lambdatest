@@ -27,7 +27,7 @@ jobs:
       - name: setup-java
         uses: actions/setup-java@v4
         with:
-          distribution: 'correto'
+          distribution: 'corretto'
           java-version: '17'
           cache: maven
       - name: Build with Maven
