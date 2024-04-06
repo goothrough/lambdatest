@@ -31,7 +31,7 @@ jobs:
           java-version: '17'
           cache: 'maven'
       - name: Build with Maven
-        run: mvn clean install -f /home/runner/work/lambdatest/lambdatest/pom.xml
+        run: mvn clean install
 
       # - name: lambda update
       #   run: |
