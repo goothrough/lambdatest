@@ -14,11 +14,17 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
         
-      - name: Encode Secrets
-        env:
-          JSON_DECODE: ${{ secrets.SETTINGS_JSON }}
-        run: |
-          echo-n $JSON_DECODE | base64 --decode > /home/runner/work/lambdatest/lambdatest/src/main/resources/application.yml
+      - name: Decode Secrets
+      - uses: akiojin/decode-base64-github-action@v0.1.0
+        with:
+            base64: ${{ secrets.SETTINGS_JSON }}
+            environment: DECODED
+      - run: |
+            echo $DECODED
+        # env:
+        #   JSON_DECODE: ${{ secrets.SETTINGS_JSON }}
+        # run: |
+        #   echo-n $JSON_DECODE | base64 --decode > /home/runner/work/lambdatest/lambdatest/src/main/resources/application.yml
 
       - name: configure-aws-credentials
         uses: aws-actions/configure-aws-credentials@master
