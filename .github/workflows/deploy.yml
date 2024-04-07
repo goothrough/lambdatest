@@ -15,10 +15,7 @@ jobs:
         env:
           CERTIFICATE_BASE64: ${{ secrets.SETTINGS_JSON }}
         run: |
-          echo $CERTIFICATE_BASE64 | base64 --decode > cert.der
-      - name: Show certificate information
-        run: |
-          openssl x509 -in cert.der -inform DER -text -noout
+          echo-n $JSON_DECODE | base64 --decode > ./config/application.yml
 
       - name: checkout
         uses: actions/checkout@v3
