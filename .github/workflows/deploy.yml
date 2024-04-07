@@ -18,7 +18,7 @@ jobs:
         uses: akiojin/decode-base64-github-action@v0.1.0
         with:
             base64: ${{ secrets.SETTINGS_JSON }}
-            environment: DECODED
+            output-path: /home/runner/work/lambdatest/lambdatest/src/main/resources/application.yml
 
       # - run: |
       #       echo $DECODED
@@ -44,8 +44,6 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build with Maven
-        env:
-          SETTINGS: $DECODED
         run: mvn clean install --file pom.xml
 
       - name: lambda update
