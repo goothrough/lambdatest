@@ -19,8 +19,13 @@ jobs:
         with:
             base64: ${{ secrets.SETTINGS_JSON }}
             environment: DECODED
-      - run: |
-            echo $DECODED
+            
+      - name: set env
+        env:
+          SETTINGS: $DECODED
+
+      # - run: |
+      #       echo $DECODED
         # env:
         #   JSON_DECODE: ${{ secrets.SETTINGS_JSON }}
         # run: |
