@@ -19,10 +19,6 @@ jobs:
         with:
             base64: ${{ secrets.SETTINGS_JSON }}
             environment: DECODED
-            
-      - name: set env
-        env:
-          SETTINGS: $DECODED
 
       # - run: |
       #       echo $DECODED
@@ -48,6 +44,8 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build with Maven
+        env:
+          SETTINGS: $DECODED
         run: mvn clean install --file pom.xml
 
       - name: lambda update
