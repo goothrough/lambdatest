@@ -35,5 +35,7 @@ jobs:
 
       - name: lambda update
         run: |
-          zip -r package.zip ./*
-          aws lambda update-function-code --function-name ${{ secrets.FUNCTION_NAME }} --zip-file fileb://package.zip --publish
+          # zip -r package.zip ./*
+          # aws lambda update-function-code --function-name ${{ secrets.FUNCTION_NAME }} --zip-file fileb://package.zip --publish
+          cd target
+          aws lambda update-function-code --function-name ${{ secrets.FUNCTION_NAME }} --zip-file fileb://lambdatest-0.0.1-SNAPSHOT.jar.original --publish
