@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: My first action
         env:
-          CERTIFICATE_BASE64: ${{ secrets.SETTINGS_JSON }}
+          JSON_DECODE: ${{ secrets.SETTINGS_JSON }}
         run: |
           echo-n $JSON_DECODE | base64 --decode > ./config/application.yml
 
