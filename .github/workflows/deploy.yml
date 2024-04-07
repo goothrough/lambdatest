@@ -20,13 +20,6 @@ jobs:
             base64: ${{ secrets.SETTINGS_JSON }}
             output-path: /home/runner/work/lambdatest/lambdatest/src/main/resources/application.yml
 
-      # - run: |
-      #       echo $DECODED
-        # env:
-        #   JSON_DECODE: ${{ secrets.SETTINGS_JSON }}
-        # run: |
-        #   echo-n $JSON_DECODE | base64 --decode > /home/runner/work/lambdatest/lambdatest/src/main/resources/application.yml
-
       - name: configure-aws-credentials
         uses: aws-actions/configure-aws-credentials@master
         with:
@@ -48,7 +41,5 @@ jobs:
 
       - name: lambda update
         run: |
-          # zip -r package.zip ./*
-          # aws lambda update-function-code --function-name ${{ secrets.FUNCTION_NAME }} --zip-file fileb://package.zip --publish
           cd target
           aws lambda update-function-code --function-name ${{ secrets.FUNCTION_NAME }} --zip-file fileb://lambdatest-aws-package.zip --publish
