@@ -59,62 +59,40 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<!-- <plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-shade-plugin</artifactId>
-			    <configuration>
-			        <createDependencyReducedPom>false</createDependencyReducedPom>
-			    </configuration>
-			    <executions>
-			        <execution>
-			            <phase>package</phase>
-			            <goals>
-			                <goal>shade</goal>
-			            </goals>
-			            <configuration>
-			                <artifactSet>
-			                    <excludes>
-			                        <exclude>org.apache.tomcat.embed:*</exclude>
-			                    </excludes>
-			                 </artifactSet>
-			            </configuration>
-			         </execution>
-			     </executions>
-			 </plugin> -->
-			  <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-            <finalName>${project.name}-${project.version}</finalName>
-            <archive>
-                <manifest>
-                    <addClasspath>true</addClasspath>
-                    <classpathPrefix>lib/</classpathPrefix>
-                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                    <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                </manifest>
-            </archive>
-        </configuration>
-    </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<finalName>${project.name}-${project.version}</finalName>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
 
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-            <execution>
-                <id>copy-dependencies</id>
-                <phase>package</phase>
-                <goals>
-                    <goal>copy-dependencies</goal>
-                </goals>
-                <configuration>
-                    <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                    <includeScope>runtime</includeScope>
-                </configuration>
-            </execution>
-        </executions>
-    </plugin>
-			  <!-- Assembler to produce ditribution zip -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+							<includeScope>runtime</includeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		    <plugin>
 		        <artifactId>maven-assembly-plugin</artifactId>
 		        <executions>

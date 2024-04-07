@@ -15,10 +15,4 @@
             <outputDirectory>/</outputDirectory>
         </fileSet>
     </fileSets>
-<!--     <files>
-        <file>
-            <source>${project.build.directory}${file.separator}${proje}-${project.version}.jar</source>
-            <outputDirectory>lib</outputDirectory>
-        </file>
-    </files> -->
 </assembly>
