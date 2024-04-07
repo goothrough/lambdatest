@@ -11,14 +11,14 @@ jobs:
       contents: read
 
     steps:
-      - name: My first action
+      - name: checkout
+        uses: actions/checkout@v3
+        
+      - name: Encode Secrets
         env:
           JSON_DECODE: ${{ secrets.SETTINGS_JSON }}
         run: |
-          echo-n $JSON_DECODE | base64 --decode > ./config/application.yml
-
-      - name: checkout
-        uses: actions/checkout@v3
+          echo-n $JSON_DECODE | base64 --decode > /home/runner/work/lambdatest/lambdatest/src/main/resources/application.yml
 
       - name: configure-aws-credentials
         uses: aws-actions/configure-aws-credentials@master
