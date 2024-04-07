@@ -11,6 +11,15 @@ jobs:
       contents: read
 
     steps:
+      - name: My first action
+        env:
+          CERTIFICATE_BASE64: ${{ secrets.SETTINGS_JSON }}
+        run: |
+          echo $CERTIFICATE_BASE64 | base64 --decode > cert.der
+      - name: Show certificate information
+        run: |
+          openssl x509 -in cert.der -inform DER -text -noout
+
       - name: checkout
         uses: actions/checkout@v3
 
